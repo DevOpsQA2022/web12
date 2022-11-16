@@ -9,15 +9,15 @@ pipeline {
               echo 'successfully'
                 sh 'mvn clean package'    
 //               sh 'mvn -f web12/pom.xml <goals>'
-//                  sh "mv target/*.war target/JavaWeb.war"
+                 sh "mv target/*.war target/JavaWeb.war"
             }
-            post{
-                 success{
-                     echo "Archiving the Artifacts"
-                     archiveArtifacts artifacts: '**/target/*war'
+//             post{
+//                  success{
+//                      echo "Archiving the Artifacts"
+//                      archiveArtifacts artifacts: '**/target/*war'
                     
-                 }
-            }
+//                  }
+//             }
         }
    
         stage ('Deploy') {

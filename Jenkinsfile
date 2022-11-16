@@ -22,7 +22,7 @@ pipeline {
    
         stage ('Deploy') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: '21ea2bf6-8c27-4873-b754-a7a6b9159a0f', path: '', url: 'http://localhost:9090/')], contextPath: 'JavaWeb', onFailure: false, war: 'JavaWeb/target/*.war'
+                deploy adapters: [tomcat8(credentialsId: 'a113e3b9-6ba1-471a-8989-c99776136ead', path: '', url: 'http://localhost:9090/')], contextPath: 'web12', onFailure: false, war: 'web12/target/*.war''
             }
         }
     }

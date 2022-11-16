@@ -9,7 +9,7 @@ pipeline {
               echo 'successfully'
                 sh 'mvn clean package'    
 //               sh 'mvn -f web12/pom.xml <goals>'
-                 sh "mv target/*.war target/JavaWeb.war"
+                 sh "mv target/*.war target/web12.war"
             }
 //             post{
 //                  success{

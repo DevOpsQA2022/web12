@@ -27,7 +27,7 @@ pipeline {
         }
         stage ('start to testing') {
             steps {
-               mail bcc: '', body: 'Please test the current build', cc: '', from: '', replyTo: '', subject: 'hello world build', to: 'manjula.r@ciglobalsolutions.com'
+               mail bcc: '', body: 'Please test the current build', cc: '', from: 'manjula.r@ciglobalsolutions.com', replyTo: '', subject: 'hello world build', to: 'manjula.r@ciglobalsolutions.com'
             }
         }
         

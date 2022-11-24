@@ -7,14 +7,14 @@ pipeline {
         stage ('Build') {
             steps {
               echo 'successfully'
-                sh 'mvn clean package'    
+                sh 'mvn clean build'    
 //               sh 'mvn -f web12/pom.xml <goals>'
                //  sh "mv target/*.war target/web12.war"
             }
             post{
                  success{
                      echo "Archiving the Artifacts"
-                     archiveArtifacts artifacts: '**/target/*war'
+                     archiveArtifacts artifacts: '**/target/*.war'
                     
                  }
             }

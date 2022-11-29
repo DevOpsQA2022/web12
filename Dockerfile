@@ -1,5 +1,5 @@
 
-FROM Openjdk:17-jre-alpine
+FROM openjdk:17-jre-alpine
 
 COPY target/spring-boot-*.war /app.war
 

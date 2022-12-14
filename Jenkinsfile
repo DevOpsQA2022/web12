@@ -1,19 +1,29 @@
-pipeline {
+pipepipeline {
     agent any
-//     tools{
-//         maven 'Maven_Home'
-//     }
+    tools{
+        maven 'Maven_Home'
+    }
     stages {
         stage ('Build') {
             steps {
               echo 'successfully'
-              sh ' docker build -t blog/sbdemo:latest . '            
-            }          
+//               sh ' docker build -t blog/sbdemo:latest '
+                sh 'mvn clean package'    
+//               sh 'mvn -f web12/pom.xml <goals>'
+                sh "mv target/*.war target/web12.war"
+            }
+            post{
+                 success{
+                     echo "Archiving the Artifacts"
+                     archiveArtifacts artifacts: '**/target/*war'
+                    
+                 }
+            }
         }
    
         stage ('Deploy') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'a113e3b9-6ba1-471a-8989-c99776136ead', path: '', url: 'http://localhost:9090/')], contextPath: null, war: '**/app.war'
+                deploy adapters: [tomcat8(credentialsId: 'a113e3b9-6ba1-471a-8989-c99776136ead', path: '', url: 'http://localhost:9090/')], contextPath: null, war: '**/*.war'
             }
         }
     }
